@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  docs:
+    image: nginx:alpine
+    container_name: supertasker-docs
+    ports:
+      - "8080:80"
+    volumes:
+      - ./docs:/usr/share/nginx/html:ro
+      - ./SPECIFICATION.md:/usr/share/nginx/html/specification.md:ro
+      - ./BUSINESS_SPECIFICATION.md:/usr/share/nginx/html/business-specification.md:ro
+      - ./FUNCTIONAL_SPECIFICATION.md:/usr/share/nginx/html/functional-specification.md:ro
+    restart: unless-stopped
